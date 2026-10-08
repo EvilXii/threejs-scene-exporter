@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Three.js Exporter</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div>
+      <h1>3D scene exporter</h1>
+      <p id="sub">Scanning page…</p>
+    </div>
+    <button id="rescan" class="icon" title="Scan again" aria-label="Scan again">Rescan</button>
+  </header>
+
+  <main id="content" aria-live="polite"></main>
+
+  <section id="controls" hidden>
+    <div class="row">
+      <span class="lbl">Format</span>
+      <div class="seg" id="formats" role="radiogroup" aria-label="Export format">
+        <button data-f="glb" class="on" role="radio" aria-checked="true" title="Binary glTF: best for Blender, Three.js, web viewers">GLB</button>
+        <button data-f="gltf" role="radio" aria-checked="false" title="glTF JSON with embedded data">GLTF</button>
+        <button data-f="obj" role="radio" aria-checked="false" title="Wavefront OBJ + MTL + textures, zipped">OBJ</button>
+        <button data-f="stl" role="radio" aria-checked="false" title="Geometry only, for 3D printing">STL</button>
+        <button data-f="json" role="radio" aria-checked="false" title="three.js object JSON (ObjectLoader)">JSON</button>
+      </div>
+    </div>
+    <div class="opts">
+      <label><input type="checkbox" id="o-hidden"> Include hidden objects</label>
+      <label><input type="checkbox" id="o-tex" checked> Include textures</label>
+      <label><input type="checkbox" id="o-pose" checked> Bake animated pose</label>
+      <label><input type="checkbox" id="o-zup"> Z-up axis (STL / OBJ)</label>
+    </div>
+    <div class="actions">
+      <button id="export" class="primary">Export GLB</button>
+      <button id="export-all" class="ghost">Export all scenes</button>
+    </div>
+    <p id="status" role="status"></p>
+  </section>
+  <script src="popup.js"></script>
+</body>
+</html>
